@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio - Entregas Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .portfolio-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        #carouselPortfolio {
+            height: 640px;
+        }
+
+        #carouselPortfolio .carousel-inner,
+        #carouselPortfolio .carousel-item {
+            height: 100%;
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-img:hover {
+            transform: scale(1.02);
+        }
+
+        .thumbnail {
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .thumbnail:hover {
+            opacity: 1;
+        }
+
+        .thumbnail.active {
+            opacity: 1;
+            border-color: #0d6efd;
+        }
+
+        .modal-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- ============================ HEADER ============================ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-code"></i> DevPortfólio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/Curriculo_Portifolio_Online/index.html">Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Portfólio</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="/Curriculo_Portifolio_Online/contato.html">Contato</a></li>
+                </ul>
+
+                <div class="dropdown">
+                    <button class="btn btn-outline-light position-relative" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">99+</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <h6 class="dropdown-header">Notificações</h6>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Mensagem 1: Novo projeto?</a></li>
+                        <li><a class="dropdown-item" href="#">Mensagem 2: Entrevista</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Ver todas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================ CONTEÚDO PRINCIPAL ============================ -->
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card portfolio-card shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h4 class="mb-0 fw-bold"><i class="fas fa-folder-open text-primary me-2"></i>Meus Projetos</h4>
+                    </div>
+                    <div class="card-body p-0">
+
+                        <!-- Carrossel Principal -->
+                        <div id="carouselPortfolio" class="carousel slide" data-bs-ride="false">
+                            <div class="carousel-inner">
+
+                                <!-- Projeto 1 -->
+                                <div class="carousel-item active" data-bs-interval="5000">
+                                    <img src="./images/site_1.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - Demonstração Front-end" onclick="openModal(0)">
+                                </div>
+
+                                <!-- Projeto 2 -->
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <img src="./images/site_2.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - Listagem Avançada" onclick="openModal(1)">
+                                </div>
+
+                                <!-- Projeto 3 -->
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <img src="./images/site_3.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - Login Mãos&Patas" onclick="openModal(2)">
+                                </div>
+
+                                <!-- Projeto 4 -->
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <img src="./images/site_4.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - OrbitalWeb" onclick="openModal(3)">
+                                </div>
+
+                                <!-- Projeto 5 -->
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <img src="./images/site_5.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - Aprendizado em Bootstrap" onclick="openModal(4)">
+                                </div>
+
+                                <!-- Projeto 6 -->
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <img src="./images/site_6.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - Nexus" onclick="openModal(5)">
+                                </div>
+                                <!-- Projeto 7 -->
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <img src="./images/site_7.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - Taskan" onclick="openModal(6)">
+                                </div>
+
+                                <!-- Projeto 8 -->
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <img src="./images/site_8.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - MySQL" onclick="openModal(7)">
+                                </div>
+
+                                <!-- Projeto 9 -->
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <img src="./images/site_9.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - E-commerce com Cotação" onclick="openModal(8)">
+                                </div>
+
+                                <!-- Projeto 10 -->
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <img src="./images/site_10.png" class="d-block w-100 h-100 portfolio-img"
+                                        alt="Projeto - Diagrama" onclick="openModal(9)">
+                                </div>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselPortfolio"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon bg-dark rounded-circle p-3"
+                                    aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselPortfolio"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon bg-dark rounded-circle p-3"
+                                    aria-hidden="true"></span>
+                            </button>
+                        </div>
+
+
+                        <div class="bg-light p-3 border-top">
+                            <div class="row g-2 text-center">
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_1.png" class="thumbnail w-100 active"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="0"
+                                        onclick="selectThumbnail(0)">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_2.png" class="thumbnail w-100"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="1"
+                                        onclick="selectThumbnail(1)">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_3.png" class="thumbnail w-100"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="2"
+                                        onclick="selectThumbnail(2)">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_4.png" class="thumbnail w-100"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="3"
+                                        onclick="selectThumbnail(3)">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_5.png" class="thumbnail w-100"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="4"
+                                        onclick="selectThumbnail(4)">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_6.png" class="thumbnail w-100"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="5"
+                                        onclick="selectThumbnail(5)">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_7.png" class="thumbnail w-100"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="6"
+                                        onclick="selectThumbnail(6)">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_8.png" class="thumbnail w-100"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="7"
+                                        onclick="selectThumbnail(7)">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_9.png" class="thumbnail w-100"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="8"
+                                        onclick="selectThumbnail(8)">
+                                </div>
+                                <div class="col-4 col-md-2">
+                                    <img src="./images/site_10.png" class="thumbnail w-100"
+                                        data-bs-target="#carouselPortfolio" data-bs-slide-to="9"
+                                        onclick="selectThumbnail(9)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================ MODAL DE PROJETO ============================ -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalTitle">Projeto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" class="modal-img mb-3" alt="Projeto">
+                    <h5 class="mt-3">Descrição</h5>
+                    <p id="modalDescription">Descrição do projeto...</p>
+                    <h5 class="mt-3">Tecnologias Utilizadas</h5>
+                    <div id="modalTechs">
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container">
+
+            <div class="row d-flex justify-content-between align-items-center">
+
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <h5>Informações para Contato</h5>
+                    <p class="mb-0"><i class="fas fa-envelope"></i> mouravinicius872@gmail.com</p>
+                    <p class="mb-0"><i class="fas fa-phone"></i> (14) 99112-0800</p>
+                </div>
+
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-2">&copy; 2026 Vinícius Filipini de Moura. Todos os direitos reservados.</p>
+
+                    <div class="d-flex justify-content-md-end justify-content-center gap-3">
+                        <a href="#" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const projects = [
+            {
+                title: "Projeto - Demonstração Front-end",
+                description: "",
+                techs: [],
+                image: "./images/site_1.png"
+            },
+            {
+                title: "Projeto - Listagem Avançada",
+                description: "",
+                techs: [],
+                image: "./images/site_2.png"
+            },
+            {
+                title: "Projeto - Login Mãos&Patas",
+                description: "",
+                techs: [],
+                image: "./images/site_3.png"
+            },
+            {
+                title: "Projeto - OrbitalWeb",
+                description: "",
+                techs: [],
+                image: "./images/site_4.png"
+            },
+            {
+                title: "Projeto - Aprendizado em Bootstrap",
+                description: "",
+                techs: [],
+                image: "./images/site_5.png"
+            },
+            {
+                title: "Projeto - Nexus",
+                description: "",
+                techs: [],
+                image: "./images/site_6.png"
+            },
+            {
+                title: "Projeto - Taskan",
+                description: "",
+                techs: [],
+                image: "./images/site_7.png"
+            },
+            {
+                title: "Projeto - MySQL",
+                description: "",
+                techs: [],
+                image: "./images/site_8.png"
+            },
+            {
+                title: "Projeto - E-commerce com Cotação",
+                description: "",
+                techs: [],
+                image: "./images/site_9.png"
+            },
+            {
+                title: "Projeto - Diagrama",
+                description: "",
+                techs: [],
+                image: "./images/site_10.png"
+            }
+        ];
+
+        // Função para abrir o modal
+        function openModal(projectIndex) {
+            const project = projects[projectIndex];
+
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalDescription').textContent = project.description;
+            document.getElementById('modalImage').src = project.image;
+
+            // Gerar tags de tecnologias
+            const techsContainer = document.getElementById('modalTechs');
+            techsContainer.innerHTML = project.techs.map(tech =>
+                `<span class="project-tag">${tech}</span>`
+            ).join('');
+
+            // Abrir modal
+            const modal = new bootstrap.Modal(document.getElementById('projectModal'));
+            modal.show();
+        }
+
+        // Função para selecionar miniatura
+        function selectThumbnail(index) {
+            // Remove active de todas
+            document.querySelectorAll('.thumbnail').forEach(img => img.classList.remove('active'));
+            // Adiciona active na clicada
+            document.querySelectorAll('.thumbnail')[index].classList.add('active');
+        }
+
+        // Atualiza miniaturas quando slide muda
+        document.getElementById('carouselPortfolio').addEventListener('slide.bs.carousel', function (event) {
+            selectThumbnail(event.to);
+        });
+    </script>
+</body>
+
+</html>
